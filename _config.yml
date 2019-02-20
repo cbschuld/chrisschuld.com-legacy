@@ -1,0 +1,32 @@
+# Dependencies
+# markdown:         redcarpet
+# highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+# relative_permalinks: true
+
+# Setup
+title:            Chris Schuld
+tagline:          'My Notebook'
+description:      'Endless nerd and vertical SaaS entrepreneur.  Intrigued by software engineering, software as a business and aviation.'
+url:              https://chrisschuld.com/
+baseurl:          /
+
+author:
+  name:           'Chris Schuld'
+  url:            https://chrisschuld.com/
+
+paginate:         10
+
+# Custom vars
+version:          1.0.0
+
+github:
+  repo:           https://github.com/cbschuld/chrisschuld.com
+
+plugins:          [jekyll-paginate, jekyll-seo-tag, jekyll-sitemap]
+
+tags:
+
+repository:       cbschuld/chrisschuld.com
