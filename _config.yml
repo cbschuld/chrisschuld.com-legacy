@@ -1,10 +1,8 @@
 # Dependencies
-# markdown:         redcarpet
-highlighter:      pygments
+highlighter:      rouge
 
 # Permalinks
 permalink:        pretty
-# relative_permalinks: true
 
 # Setup
 title:            Chris Schuld
@@ -16,11 +14,9 @@ author:
   name:           'Chris Schuld'
   url:            https://chrisschuld.com/
 
-paginate:         10
+paginate:         4
 
-# Custom vars
-version:          1.0.0
-
+repository:       cbschuld/chrisschuld.com
 github:
   repo:           https://github.com/cbschuld/chrisschuld.com
 
@@ -28,4 +24,7 @@ plugins:          [jekyll-paginate, jekyll-seo-tag, jekyll-sitemap]
 
 tags:
 
-repository:       cbschuld/chrisschuld.com
+google_analytics:
+  tracking_id:    'UA-2228390-1'
+
+version:          1.0.0
