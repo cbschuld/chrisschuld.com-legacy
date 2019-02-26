@@ -2,7 +2,7 @@
 highlighter:      rouge
 
 # Permalinks
-permalink:        /:categories/:year/:month//:title/
+permalink:        /:categories/:year/:month/:title/
 
 # Setup
 title:            Chris Schuld
@@ -10,22 +10,18 @@ tagline:          My Notebook
 description:      Forever nerd and vertical SaaS entrepreneur.  Intrigued by software engineering, software as a business and aviation.
 url:              https://chrisschuld.com
 baseurl:          /
-
 author:
   name:           Chris Schuld
   url:            https://chrisschuld.com
-
 paginate:         4
-
 repository:       cbschuld/chrisschuld.com
 github:
   repo:           https://github.com/cbschuld/chrisschuld.com
 
+# Plugins, Tags, Categories and Analytics  
 plugins:          [jekyll-paginate, jekyll-seo-tag, jekyll-sitemap]
 
 tags:
 
 google_analytics:
   tracking_id:    UA-2228390-1
-
-version:          1.0.0

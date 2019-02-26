@@ -14,7 +14,7 @@ For clarity I have a [PC1832](https://amzn.to/2XlajBG) with four  keypads and I 
 
 ### Where's the manual?
 
-[Manual for the DSC1832]("/public/documents/PC1616-1832-1864_Installation_Manual_ENG_29008247R004.pdf")
+[Installation Manual for the DSC PC1616 / PC 1832 / PC1864](/public/documents/PC1616-1832-1864_Installation_Manual_ENG_29008247R004.pdf)
 
 ### Let's get going
 
