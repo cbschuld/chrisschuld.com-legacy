@@ -100,7 +100,7 @@ My alarm panel was in trouble mode until I told the system I will not be using t
 
 ### Partitioning the zones beyond eight
 
-Partitioning was the one step in the process that was initially confusing for me.  You have to partition the zones above eight be in the same partition as the other zones.  I have 24 zones on my system provided by the 8 default zones on the PC1832 and the 16 addiitonal zones from the two additional [PC5108 expanders](https://amzn.to/2Eqv9s3).
+Partitioning was the one step in the process that was initially confusing for me.  You have to partition the zones above eight be in the same partition as the other zones.  I have 24 zones on my system provided by the 8 default zones on the PC1832 and the 16 additional zones from the two additional [PC5108 expanders](https://amzn.to/2Eqv9s3).
 
 Zones 9-24 need to be told to be in partition 1.
 
@@ -109,7 +109,7 @@ Zones 9-24 need to be told to be in partition 1.
 *8 5555 204 123456789 #
 ```
 
-This should show each zone being added into the parition as you enter 1, 2, 3, 4, 5, ...
+This should show each zone being added into the partition as you enter 1, 2, 3, 4, 5, ...
 
 ### Check the devices
 
@@ -117,7 +117,7 @@ In the manual there is a programming feature called "View Module Supervision" th
 
 <img src="/public/images/dsc-module-supervision-903.png" class="shadow"/>
 
-In my case I wanted to see in the display 1, 2, 3, 4, 8, 9, 10 which would prepresent my keypads, my IT-100 board as well as represent my two expansion / expander boards.
+In my case I wanted to see in the display 1, 2, 3, 4, 8, 9, 10 which would represent my keypads, my IT-100 board as well as represent my two expansion / expander boards.
 
 ```
 *8 5555 903 [wait for display] #
@@ -132,7 +132,7 @@ Resetting the master code is straight forward, for this example, I'll reset it t
 
 ### Reset the Installer Code
 
-Resetting the insaller code is straight forward, for this example, I'll reset it to 5566
+Resetting the installer code is straight forward, for this example, I'll reset it to 5566
 ```
 *8 5555 006 5566 #
 ``` 
@@ -149,9 +149,9 @@ Resetting the insaller code is straight forward, for this example, I'll reset it
 **A:** That is because they are in the wrong partition and have to be moved into partition one.  The DSC factory resets with zones 9-X in partition 0 so they do not appear in partition 1 automatically.
 
 **Q:** The DSC alarm cannot see the zones (the zones will not chime) in my expander units - WTF?  
-**A:** Initially I thought I had the jumpers wrong on the system but it turns out they were in a zero partition and usings codes 202, 203 and 204 fixed that (question above)
+**A:** Initially I thought I had the jumpers wrong on the system but it turns out they were in a zero partition and using codes 202, 203 and 204 fixed that (question above)
 
 ### Hindsight
 
-In hindsight it would have been less expensive to not purchase the [IT-100 board](https://amzn.to/2BPi9KB) and instead pick up the [Eyez-On Envisalink EVL-4EZR](https://amzn.to/2E6YINH).  The IT-100 board was fun to mess with and was somewhat nostaglic.  However, now I am decorating it with a Raspberry Pi.
+In hindsight it would have been less expensive to not purchase the [IT-100 board](https://amzn.to/2BPi9KB) and instead pick up the [Eyez-On Envisalink EVL-4EZR](https://amzn.to/2E6YINH).  The IT-100 board was fun to mess with and was somewhat nostalgic.  However, now I am decorating it with a Raspberry Pi.
 
