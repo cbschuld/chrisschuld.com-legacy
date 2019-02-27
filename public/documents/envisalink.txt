@@ -1,0 +1,82 @@
+host: 0.0.0.0
+panel_type: DSC
+user_name: user
+password: pass
+code: '0000'
+zones:
+  1:
+    name: 'Front Door'
+    type: 'door'
+  2:
+    name: 'Den Door'
+    type: 'door'
+  3:
+    name: 'Guest Door'
+    type: 'door'
+  4:
+    name: 'Casita Door'
+    type: 'door'
+  5:
+    name: 'Casita Bathroom'
+    type: 'window'
+  6:
+    name: 'Guest Bathroom'
+    type: 'window'
+  7:
+    name: 'Mechanical Room'
+    type: 'door'
+  8:
+    name: 'Master Windows'
+    type: 'window'
+  9:
+    name: 'Master Door'
+    type: 'door'
+  10:
+    name: 'Glass Slider'
+    type: 'door'
+  11:
+    name: 'Back Door'
+    type: 'door'
+  12:
+    name: 'Breakfast Windows'
+    type: 'window'
+  13:
+    name: 'Pool Bathroom Door'
+    type: 'door'
+  14:
+    name: 'Theater Windows'
+    type: 'window'
+  15:
+    name: 'Bode Bathroom'
+    type: 'window'
+  16:
+    name: 'Bode Room'
+    type: 'window'
+  17:
+    name: 'Brock Room'
+    type: 'window'
+  18:
+    name: 'Garage Door'
+    type: 'door'
+  19:
+    name: 'Garage Courtyard Door'
+    type: 'door'
+  20:
+    name: 'Dining Room Door'
+    type: 'door'
+  21:
+    name: 'Casita Motion'
+    type: 'motion'
+  22:
+    name: 'Master Motion'
+    type: 'motion'
+  23:
+    name: 'Great Room Motion'
+    type: 'motion'
+  24:
+    name: 'Garage Doors'
+    type: 'door'
+
+partitions:
+  1:
+    name: 'Alarm'
