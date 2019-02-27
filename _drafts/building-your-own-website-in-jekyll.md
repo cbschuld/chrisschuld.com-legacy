@@ -5,7 +5,6 @@ tags: jekyll blog website docker
 
 > A simple walk-through for creating a static blog website using Jekyll, a Liquid Theme, hosted on Github pages, using Markdown and Docker for local hosting.
 
-
 ## Background
 
 ### Personal Anecdote
