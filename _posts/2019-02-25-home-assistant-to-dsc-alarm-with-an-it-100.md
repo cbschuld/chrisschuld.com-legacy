@@ -105,7 +105,7 @@ If you ever need to **stop the service**:
 sudo systemctl stop evl-emu.service
 ```
 
-Also, if you ever need or want to ***look at the logs** and info coming from the python script you can do that with:
+Also, if you ever need or want to **look at the logs** and info coming from the python script you can do that with:
 ````shell
 sudo journalctl -f -u evl-emu.service
 ````
