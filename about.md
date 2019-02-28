@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-order: 3
+order: 4
 ---
 
 I am Chris Schuld and I live in Chandler, Arizona.  When I was ten years old I was shown [BASIC](https://en.wikipedia.org/wiki/BASIC) and [QBASIC](https://en.wikipedia.org/wiki/QBasic) by my fifth grade teacher and I fell in love with the idea I could control a computer.  I spent a lot of my time in front of the computer attempting to mimic software I saw in magazines and wishing I could [afford a hard drive](https://www.pcworld.com/article/127105/article.html) in the 80s.  Fast forward... earned a Bachelor of Engineering degree in Computer Systems Engineering from [Arizona State University](https://engineering.asu.edu/). I spent a few years at [Intel Corporation](https://intel.com/) before leaving to start my own ventures.

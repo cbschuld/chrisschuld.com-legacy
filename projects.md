@@ -1,6 +1,7 @@
 ---
 title: Projects
 layout: page
+order: 3
 ---
 Here are a few public projects and open source concepts I am working on and with:
 
