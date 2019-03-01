@@ -2,7 +2,7 @@
 highlighter:      rouge
 
 # Permalinks
-permalink:        /:categories/:year/:month/:title/
+permalink:        /:categories/:year/:month/:title
 
 # Setup
 title:            Chris Schuld
