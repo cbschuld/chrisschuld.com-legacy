@@ -2,12 +2,12 @@
 highlighter:      rouge
 
 # Permalinks
-permalink:        /:categories/:year/:month/:title/
+permalink:        /:categories/:year/:month/:title
 
 # Setup
 title:            Chris Schuld
-tagline:          My Notebook
-description:      Forever nerd and vertical SaaS entrepreneur.  Intrigued by software engineering, software as a business and aviation.
+tagline:          notes about stuff
+description:      Vertical SaaS entrepreneur and forever nerd.  Intrigued by software engineering, software as a business and aviation.
 url:              https://chrisschuld.com
 baseurl:          /
 author:
