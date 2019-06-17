@@ -18,7 +18,7 @@ Whole House Audio is a really expensive endeavor to start out on.  I was shocked
 The Choice
 ----------
 <img src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/monoprice-amp.png" align="right"/>
-I selected the [six channel multi-zone amplifier from Monoprice](https://www.monoprice.com/product?p_id=10761).  The multi-zone amplifier sounds completely acceptable and comes with a amp bridge mode for mono zone control as well.  Furthering the controller has a DB9 output and a simplistic serial interface to control the system remotely.  The system uses simplistic CAT5 wiring for the keypads and has multiple audio inputs for each zone.  It also has another ribbon cable to link multiple controllers together.  The home I was building required 12 zones so it fit my situation perfectly.  I purchased two of them.
+I selected the [six channel multi-zone amplifier from Monoprice](https://www.monoprice.com/product?p_id=10761) *([device manual](https://downloads.monoprice.com/files/manuals/10761_Manual_141028.pdf))*.  The multi-zone amplifier sounds completely acceptable and comes with a amp bridge mode for mono zone control as well.  Furthering the controller has a DB9 output and a simplistic serial interface to control the system remotely.  The system uses simplistic CAT5 wiring for the keypads and has multiple audio inputs for each zone.  It also has another ribbon cable to link multiple controllers together.  The home I was building required 12 zones so it fit my situation perfectly.  It only provides 25W RMS for 8ohms impedance speakers *(which I intended to use 8ohms speakers)*.  I was hoping to get more power but I have yet to be in a position where I wished I had more power at the amp.  My children both continue to test the road to clipping and distortion and I have not noticed it being an issue overall.  I purchased two of the controllers to power all 12 zones.
 
 To control the system from my phone I needed to link a few things together.  In my case I linked to the controllers using a USB to DB9 null serial cable.  Getting the right cable ended up being one of the tricky parts.  One of the cables I tried did not work - this one does.
 
@@ -31,9 +31,11 @@ Total                                                                           
 <img src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/polk-80i.png" align="right" width="300"/>
 Then I needed speakers; I went with the 8" and 6" in-wall / in-ceiling speakers from Polk.  They sound great for their price point.  I had at least two of these in each room and in three areas I bridged four of them together in mono (more on this later).
 
- [Polk Audio RC80i 8" In-Ceiling](https://amzn.to/2KkF1rw) | $129.99
- [Polk Audio RC60i 6" In-Ceiling](https://amzn.to/2Fbiqcr) | $129.99
- Total for  *ALL* of the speakers                          | ~$1950
+[Polk Audio RC80i 8" In-Ceiling](https://amzn.to/2KkF1rw) | $129.99
+[Polk Audio RC60i 6" In-Ceiling](https://amzn.to/2Fbiqcr) | $129.99
+Total for  *ALL* of the speakers                          | ~$1950
+
+*(note: both the RC80i and RC60i are 8ohms total impedance speakers)*
 
 Overview of the System
 ----------------------
@@ -83,11 +85,11 @@ You can read more about the decoration here:
 
 Other Ideas
 -----------
-+ Russound D1650 - $999 per controller and I needed two and no way to control it digitally
-+ Russound CAA66 Controller Kit - this is like the D1650 but has a DB9 serial out; but I needed two of these at $1200
++ [Russound D1650](https://amzn.to/2IRVlws) - $999 per controller and I needed two and no way to control it digitally
++ [Russound CAA66](https://amzn.to/2KWQL2L) Controller Kit - this is like the D1650 but has a DB9 serial out; but I needed two of these at $1200
 + Sonos - each zone required one of their wireless speakers or a stack of their $600 amps - too costly
 + Denon HEOS - similiar issue to the Sonos - too many physical devices to purchase
-+ Niles MRC-6430 - controllers were $1200, needed two of them - BUT they had an app
++ [Niles MRC-6430](https://amzn.to/2IotFQZ) - controllers were $1200, needed two of them - BUT they had an app
 + [Dayton Audio MA1240a Multi-Zone 12 Channel Amplifier](https://amzn.to/2FasliE) - no DB9 output for external control
 
 
