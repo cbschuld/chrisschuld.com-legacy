@@ -54,6 +54,8 @@ I wired 4 conductor (2 channel), 14 gauge speaker wire from the closet to each k
 
 I wired every zone to a single closet.
 
+Make sure you stay aware of your speaker impedance - in my case I was using 8Ω speakers from Polk.  If you want to use the bridging available in the Amp you'll need to make sure you maintain the 8Ω - you can learn more [how I did bridging here](/2019/05/four-speakers-8ohms-mono/). 
+
 Wiring to save money
 --------------------
 
