@@ -26,7 +26,7 @@ The second example:
 docker run --name db44 -d -e PMA_HOST=10.0.0.44 -p 8044:80 phpmyadmin/phpmyadmin 
 ```
 
-Again, I change the PMA_HOST, the name of the container and the port it is used; this way I know that if I want to manage `d44` via phpMyAdmin I simply browse to [http://localhost:8021](http://localhost:8021)
+Again, I change the PMA_HOST, the name of the container and the port it is used; this way I know that if I want to manage `d44` via phpMyAdmin I simply browse to [http://localhost:8044](http://localhost:8044)
 
 When you run this the first time docker will need to pull down the latest image of phpmyadmin/phpmyadmin.  This may take a bit; but after the container is pulled down starting, stopping, and reloading the container is straight forward:
 
