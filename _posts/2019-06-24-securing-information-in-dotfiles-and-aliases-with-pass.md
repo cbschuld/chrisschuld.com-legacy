@@ -27,7 +27,20 @@ First, we setup a GPG setup with keys.  If you do NOT have one already; obviousl
 ```bash
 brew install gpg gpg2
 cd $HOME
+```
 
+If you do not have a fingerprint setup; you can build one quickly with
+```bash
+gpg --full-gen-key
+```
+
+Backup GPG
+----------
+You can backup your GPG files with
+```bash
+gpg --export-secret-keys --armor [fingerprint] > privkey.asc
+gpg --export --armor [fingerprint] > pubkey.asc
+gpg --export-ownertrust > pgp-ownertrust.asc
 ```
 
 Github Setup
