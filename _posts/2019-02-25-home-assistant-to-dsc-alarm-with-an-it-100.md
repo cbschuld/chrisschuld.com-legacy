@@ -1,7 +1,7 @@
 ---
 title: Home Assistant with a DSC Alarm, an IT-100 board and a Raspberry Pi
 layout: post
-tags: ha dsc
+tags: home-automation dsc
 ---
 
 Using Home Assistant with a DSC alarm is great because the components for the DSC are generally inexpensive and the access to the sensor status is dependable and simplistic.  Connecting the DSC to Home Assistant is not as easy as one would think.  Definitely not as easy as plugging in a cable however, it is generally straight forward.

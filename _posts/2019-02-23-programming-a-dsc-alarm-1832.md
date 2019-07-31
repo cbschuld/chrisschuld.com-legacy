@@ -1,7 +1,7 @@
 ---
 title: Programming a DSC 1832 Alarm (or re-programming)
 layout: post
-tags: ha dsc
+tags: home-automation dsc
 ---
 
 I have a DSC alarm at my house (a [PC1832](https://amzn.to/2XlajBG)) and I want to use [Home Assistant](https://www.home-assistant.io/) to work with it.  I purchased the [IT-100 board](https://amzn.to/2BPi9KB) and then decided I wanted to expand it a bit further to include more zones.  The company who originally installed the alarm did not record the installer's code when they installed it so I was up a creek as far as knowing the installer code.

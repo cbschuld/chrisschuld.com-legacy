@@ -1,7 +1,7 @@
 ---
 title: Whole House Audio - Small Price / Big Value
 layout: post
-tags: ha audio
+tags: home-automation audio
 ---
 
 Whole House Audio is a really expensive endeavor to start out on.  I was shocked how much the "retail" systems cost and had no interest in spending that kind of money while releasing a lot of "control" to the app associated with the system.  I had a list of goals and a vision in my mind that I was striving for:
@@ -82,7 +82,7 @@ Controlling the Controller
 
 In order to digitally control the multi-zone controller I interact with their DB9 serial interface.  I interact with the interface via a Raspberry Pi running [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) and a Python program to talk to the serial interface.  The python program "decorates" the controller and allows me to interact with it via a web interface I created.
 
-You can read more about the decoration here:
+You can read more about the decoration here: [Decorating the Monoprice 6 Zone Home Audio Multizone Controller](/2019/07/decorating-the-monoprice-6-zone-home-audio-multizone-controller/)
 
 
 Other Ideas
