@@ -108,12 +108,15 @@ StandardError=syslog
 #SyslogIdentifier=nodejs-example
 #User=<alternate user>
 #Group=<alternate group>
-Environment=PORT=8181 AMPCOUNT=2 CORS=true
+Environment=PORT=8181 AMPCOUNT=2 REQUERY=true CORS=true
 
 [Install]
 WantedBy=multi-user.target
 ```
-*Note: make sure you include the correct AMPCOUNT, my setup has two amps*
+**Notes:**
++ Make sure you include the correct AMPCOUNT, my setup has two amps - simply an integer (default 1)
++ Do you use the keypads?  If yes, I would highly suggest using REQUERY=true
++ Plan on accessing the API from another host?  If so, make sure you set CORS to true.
 
 Next, let's enable the service:
 
