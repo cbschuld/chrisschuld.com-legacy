@@ -108,7 +108,7 @@ StandardError=syslog
 #SyslogIdentifier=nodejs-example
 #User=<alternate user>
 #Group=<alternate group>
-Environment=PORT=8181 AMPCOUNT=2
+Environment=PORT=8181 AMPCOUNT=2 CORS=true
 
 [Install]
 WantedBy=multi-user.target
