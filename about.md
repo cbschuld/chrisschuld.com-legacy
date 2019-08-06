@@ -6,7 +6,7 @@ order: 4
 
 I am Chris Schuld and I live in Chandler, Arizona.  When I was ten years old I was shown [BASIC](https://en.wikipedia.org/wiki/BASIC) and [QBASIC](https://en.wikipedia.org/wiki/QBasic) by my fifth grade teacher and I fell in love with the idea I could control a computer.  I spent a lot of my time in front of the computer attempting to mimic software I saw in magazines and wishing I could [afford a hard drive](https://www.pcworld.com/article/127105/article.html) in the 80s.  Fast forward... earned a Bachelor of Engineering degree in Computer Systems Engineering from [Arizona State University](https://engineering.asu.edu/). I spent a few years at [Intel Corporation](https://intel.com/) before leaving to start my own ventures.
 
-I maintain a wide technical and business skill set. I am actively engaged in my company’s technical infrastructure ranging from our virtual systems to our entire software stack.  My passion resides in software architecture, rapid development approaches, software design fundamentals and SaaS business strategy. I actively maintain several profitable production products in React JS, PHP, Node, C#, Python, Perl and Javascript.
+My passion resides in software architecture, rapid development approaches, serverless delivery, software design fundamentals and SaaS business strategy. I actively maintain several profitable production products in React JS, TypeScript, PHP, Node, C#, Python, Perl and Javascript.  You can [read more about my open source projects](/projects) as well.
 
 ### About this site
 
@@ -18,6 +18,8 @@ For those curious here is how I produce the site:
 + Encrypted using Let's Encrypt
 + Authored using Markdown on Visual Studio Code
 + Locally edited using Docker
+
+I [collected notes regarding my process](/2019/02/building-your-own-website-in-jekyll/) to produce this site.  You can easily reproduce it yourself and start publishing right away.
 
 ### Special Thanks
 Special thanks to [Mark Otto @mdo](https://twitter.com/mdo) for the theme work for Jekyll - it saved me a lot of time standing up the site.

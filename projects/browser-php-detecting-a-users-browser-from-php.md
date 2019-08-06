@@ -1,6 +1,8 @@
 ---
 title: Browser PHP detecting a users browser from PHP
 layout: project
+shortname: Browser.php
+description: a PHP class to detect the type of browser
 ---
 
 # Browser.php – Detecting a user’s browser from PHP

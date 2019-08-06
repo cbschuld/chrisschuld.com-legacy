@@ -1,0 +1,31 @@
+- name: WebApp for the Monoprice Audio Controller
+  description: A React, TypeScript web application for controlling the Monoprice Six Zone Audio Controller via a decorated JSON API
+  url: /projects/react-app-for-the-monoprice-six-zone-audio-controller
+  github: https://github.com/cbschuld/monoprice-multizone-interface
+
+- name: JSON API for the Monoprice Audio Controller
+  description: A JSON API for the Monoprice Six Zone Audio Controller written by Jesse Newland in which I helped extend and create additional features.
+  url: https://github.com/jnewland/mpr-6zhmaut-api
+  github: https://github.com/jnewland/mpr-6zhmaut-api
+
+- name: KVBA
+  description: A key/value storage service which is serverless and AWS lambda-based featuring simplistic auth and account creation.
+  url: /projects/kvba/
+  github: https://github.com/cbschuld/kvba
+
+- name: Browser.php
+  description: PHP class to detect the type of browser
+  url: /projects/browser-php-detecting-a-users-browser-from-php/
+  github: https://github.com/cbschuld/Browser.php
+  packagist: https://packagist.org/packages/cbschuld/browser.php
+
+- name: PHP Wrapper for Log Entries
+  description: PHP PSR-3 compliant logging class for the LogEntries log service (now called InsightOps).
+  url: https://packagist.org/packages/cbschuld/logentries
+  github: https://github.com/cbschuld/logentries
+  packagist: https://packagist.org/packages/cbschuld/logentries
+
+- name: PegasusPHP
+  description: A PHP-based model view controller framework I wrote when PHP5 was launched in 2004.  I added it to github in 2011.  No longer maintained.
+  url: https://github.com/cbschuld/pegasusphp.org
+  github: https://github.com/cbschuld/pegasusphp.org

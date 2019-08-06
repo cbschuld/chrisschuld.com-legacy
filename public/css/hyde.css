@@ -259,7 +259,8 @@ a.sidebar-nav-item:focus {
   color: #8f5536;
 }
 
-/* Custom changes for chrisschuld.com */
+/* ********************************************************************************* */
+/* Custom changes for chrisschuld.com                                                */
 
 img.shadow {
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
@@ -268,3 +269,27 @@ img.shadow {
 img.screenshot {
   max-width: 50%;
 }
+
+.openSourceLink {
+	background-color:transparent;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #CF8181;
+	display:inline-block;
+	cursor:pointer;
+	color:#CF8181;
+	font-size:14px;
+	font-weight:normal;
+	padding:3px 8px;
+	text-decoration:none;
+}
+.openSourceLink:hover {
+	background-color:transparent;
+}
+.openSourceLink:active {
+	position:relative;
+	top:1px;
+}
+
+        

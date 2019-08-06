@@ -1,6 +1,8 @@
 ---
 title: KVBA (Key / Value Storage with Basic Auth)
 layout: project
+shortname: KVBA
+description: a key/value serverless, lambda-based storage system
 ---
 
 # KVBA (Key / Value Storage with Basic Auth)
