@@ -44,7 +44,7 @@ There is file in the root path called `env.tsx`.  You will need to adjust this f
 Now that your environment is updated you can build the App to get ready to ship it to the Raspberry Pi (where your API is located most likely).  Staying on the same machine run the following.
 
 ```bash
-npm build
+npm run-script build
 ```
 
 ### Raspberry Pi - Installing the React App
@@ -57,7 +57,7 @@ sudo apt-get install nginx
 sudo chown -R pi:root /var/www/html
 ```
 
-Wherever you ran the `npm build` command you will now see a `build` directory.  Copy that directory to the `/var/www/html` path on the Raspberry Pi.  In my case I built it on my local development machine and just used `scp` to copy the build directoy to the Pi.  *(Note: my Raspberry Pi is located at 10.0.0.82)*
+Wherever you ran the `npm run-script build` command you will now see a `build` directory.  Copy that directory to the `/var/www/html` path on the Raspberry Pi.  In my case I built it on my local development machine and just used `scp` to copy the build directoy to the Pi.  *(Note: my Raspberry Pi is located at 10.0.0.82)*
 
 ```bash
 cd /projects/monoprice-multizone-interface
