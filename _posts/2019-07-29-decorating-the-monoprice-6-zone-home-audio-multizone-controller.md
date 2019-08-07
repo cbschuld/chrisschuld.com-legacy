@@ -30,8 +30,6 @@ I started working on my own API for the serial connection and bumped into Jesse'
 
 You can find more information about Jesse's API here: [https://github.com/jnewland/mpr-6zhmaut-api](https://github.com/jnewland/mpr-6zhmaut-api)
 
-I maintain a fork of Jesse's project here: [https://github.com/cbschuld/mpr-6zhmaut-api](https://github.com/cbschuld/mpr-6zhmaut-api)
-
 However, you will not have to get very involved in the API because I'll show you how to get it running without a lot of trouble.
 
 ### Enough, let's set this up...
@@ -82,7 +80,7 @@ I am currently using my fork for Jesse's API:
 
 ```bash
 cd ~
-git clone https://github.com/cbschuld/mpr-6zhmaut-api.git
+git clone https://github.com/jnewland/mpr-6zhmaut-api.git
 cd ~/mpr-6zhmaut-api
 npm install
 ```
