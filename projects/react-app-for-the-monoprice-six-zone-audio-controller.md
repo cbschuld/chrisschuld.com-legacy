@@ -5,6 +5,8 @@ layout: project
 
 # React and TypeScript WebApp/Interface for the Monoprice Six Zone Amp/Controller
 
+<a class="openSourceLink" href="https://github.com/cbschuld/monoprice-multizone-interface"><i class="fab fa-github" aria-hidden="true"></i> Github</a>
+
 The webapp a React JS app written in TypeScript that provides a web-based interface to control the [six channel multi-zone amplifier from Monoprice](https://www.monoprice.com/product?p_id=10761) via a JSON API on a [Raspberry Pi](https://amzn.to/2Xk58og).
 
 This project provides just the web application.  You will need to have the JSON API project running already before you use this application.  You can get more information about that API [via this walk-through](https://chrisschuld.com/2019/07/decorating-the-monoprice-6-zone-home-audio-multizone-controller/) (API is hosted via github here - [https://github.com/jnewland/mpr-6zhmaut-api](https://github.com/jnewland/mpr-6zhmaut-api)).
