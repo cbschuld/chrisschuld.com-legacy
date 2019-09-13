@@ -7,7 +7,7 @@ permalink:        /:categories/:year/:month/:title/
 # Setup
 title:            Chris Schuld
 tagline:          My Notebook
-description:      Forever nerd and vertical SaaS entrepreneur.  Intrigued by software engineering, software as a business and aviation.
+description:      Forever nerd and SaaS entrepreneur.  Intrigued by software engineering, software as a business and aviation.
 url:              https://chrisschuld.com
 baseurl:          /
 author:
