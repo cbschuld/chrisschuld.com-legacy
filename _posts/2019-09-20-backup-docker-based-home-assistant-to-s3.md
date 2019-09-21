@@ -37,6 +37,8 @@ You need to do a few things:
 + Next, you'll need to make sure your pathing aligns with mine
 + Finally, I run mine twice a month because I do not mess with HomeAssistant frequently and desired the twice a month cadence
 
+Note: this script will hold the files for 30 days on the local device before destroying them via the `find` and `exec` command.
+
 ```
 # CRON things
 0 2 */15 * * /bin/bash /opt/backup.sh
