@@ -19,7 +19,7 @@ github:
   repo:           https://github.com/cbschuld/chrisschuld.com
 
 # Plugins, Tags, Categories and Analytics  
-plugins:          [jekyll-paginate, jekyll-seo-tag, jekyll-sitemap]
+plugins:          [jekyll-paginate, jekyll-seo-tag, jekyll-sitemap, jemoji]
 
 tags:
 
