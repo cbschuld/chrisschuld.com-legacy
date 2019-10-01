@@ -9,4 +9,4 @@ If you make a new entry in fstab it will not auto-mount.  Therefore you must rel
 mount -a
 {% endhighlight %}
 
-<img src='/public/images/mount-a-example.png' alt='Mount -a' />
+<img class="block" src='/public/images/mount-a-example.png' alt='Mount -a' />
