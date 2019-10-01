@@ -227,12 +227,14 @@ blockquote p:last-child {
   }
 }
 
+/* cbs - removing for inline images
 img {
   display: block;
   max-width: 100%;
   margin: 0 0 1rem;
   border-radius: 5px;
 }
+*/
 
 /* Tables */
 table {
