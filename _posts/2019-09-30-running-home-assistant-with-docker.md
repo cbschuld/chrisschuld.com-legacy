@@ -17,7 +17,7 @@ Okay, details... here is how I run Home Assistant on Docker on a Raspberry Pi 4.
 
 + Install [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) on the Raspberry Pi 4.
 + Install [Docker and Docker-Compose](https://chrisschuld.com/2019/09/installing-docker-and-docker-compose-on-raspberry-pi4-with-raspian/).
-+ Create /root/docker-compose.yml consisting of the following (*NOTE: I use the Aeon z-wave stick at /dev/ttyACM0*):
++ Create `/root/docker-compose.yml` consisting of the following (*NOTE: I use the Aeon z-wave stick at /dev/ttyACM0*):
 
 ```yaml
 version: '3.7'
