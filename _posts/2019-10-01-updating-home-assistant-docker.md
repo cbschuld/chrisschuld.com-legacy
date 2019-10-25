@@ -21,6 +21,8 @@ pi@ha:~ $
 
 ## Updating...
 
+In order to update you'll need to know where your `docker-compose.yml` file is located.  Simply change to the directory with the `docker-compose.yml` and do the following:
+
 With Docker-Compose:
 
 ```bash
