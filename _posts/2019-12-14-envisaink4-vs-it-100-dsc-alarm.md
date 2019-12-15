@@ -4,11 +4,11 @@ layout: post
 tags: home-automation home-assistant dsc
 ---
 
-The DSC alarm panel is easily one of my most favorite things to use with home automation.  It is a source of inexpensive motion sensors, entry points and overall presence detection.  There are two primary ways to get signal out of the DSC alarm: the [EnvisaLink 4](https://amzn.to/2PpdjLv) and the [IT-100](https://amzn.to/35nSvt8).
+The DSC alarm panel is easily one of my favorite things to use with home automation.  It is a source of inexpensive motion sensors, entry points and overall presence detection.  There are two primary ways to get signal out of the DSC alarm: the [EnvisaLink 4](https://amzn.to/2PpdjLv) and the [IT-100](https://amzn.to/35nSvt8).
 
 ## IT-100
 
-The IT-100 board is an interface board that translate keypad bus data from the DSC into an API you can interact with via RS-232 serial.
+The IT-100 board is an interface board that translates keypad bus data from the DSC into an API you can interact with via RS-232 serial.
 
 To install you add the IT-100 to the keypad bus, it will show up as keypad #8 on the bus and you can immediately receive and send status and commands on the RS-232 serial via a DB9 connector.  Overall setup is not hard and it was always responsive at boot / power up.
 
