@@ -6,17 +6,9 @@ tags: aws
 
 I continue to find a need for a simple and inexpensive VPN solution for Amazon Web Services.  The VPN solutions AWS provides feel like extended pricing overkill for what I am typically looking for.  I also want to add SSL for the HTTPS side of the configuration via [Let's Encrypt](https://letsencrypt.org/).
 
-### Pick 2
+### Goals (pick 2) and Process
 
-In the Good, Fast, Cheap triangle I am working towards Fast and Cheap here.
-
-### Goals
-
-Overall I want to connect to my AWS VPC via VPN, access resources and then disconnect.  I do not have a goal beyond that.
-
-### Process
-
-Here is the walk through I use to stand up an OpenVPN server in an AWS account and use [Let's Encrypt](https://letsencrypt.org/) to provide the SSL certificate.
+In the Good, Fast, Cheap triangle I am working towards Fast and Cheap here.  Overall I want to connect to my AWS VPC via VPN, access resources and then disconnect.  I do not have a goal beyond that.  Thus... here is the walk-through I use to stand up an OpenVPN server in an Amazon Web Services (AWS) account and use [Let's Encrypt](https://letsencrypt.org/) to provide the SSL certificate.
 
 #### Create the Instance
 
