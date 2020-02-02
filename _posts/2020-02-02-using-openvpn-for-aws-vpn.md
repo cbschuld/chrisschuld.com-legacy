@@ -44,6 +44,7 @@ ssh -i key.pem openvpnas@$DOMAIN
 On the initial login you'll be presented with the welcome and you'll be walked through the init screen.
 <img alt="openvpn service agreement" src="/images/openvpn-agreement-terminal.png"/>
 
+```
 Please enter 'yes' to indicate your agreement [no]: **yes**
 Will this be the primary Access Server node? **yes**
 Please specify the network interface and IP address to be used by the Admin Web UI: **1 - all interfaces**
@@ -56,6 +57,7 @@ Private subnets detected: **XXX.XXX.XXX.XXX/16** (*default*)
 Should private subnets be accessible to clients by default? **yes**
 Do you wish to login to the Admin UI as "openvpn"? **yes**
 Please specify your OpenVPN-AS license key (or leave blank to specify later): **blank**
+```
 
 Next, set your admin password (how you will login to the web app portion of the setup):
 ```zsh
