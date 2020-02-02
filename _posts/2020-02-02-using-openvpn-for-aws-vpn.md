@@ -25,11 +25,10 @@ I turn my VPN up and down with the AWS CLI when I need it.  Because of this I pr
 
 #### Login and Configuration
 
-After the instance is up I ssh into the system.
+After the instance is up I ssh into the system (**note**: *the system username is openvpnas but the admin username for the web app is openvpn to keep you on your toes*).
 
 ```zsh
 DOMAIN=[your_domain]
-EMAIL=[your_email]
 ssh -i key.pem openvpnas@$DOMAIN
 ```
 
@@ -51,8 +50,10 @@ Do you wish to login to the Admin UI as "openvpn"? yes
 Please specify your OpenVPN-AS license key (or leave blank to specify later): blank
 ```
 
-Next, set your admin password (how you will login to the web app portion of the setup):
+Next, I setup the two variables I'll need to setup the rest of the server and I set the admin password (how you will login to the web app portion of the setup)
 ```zsh
+DOMAIN=[your_domain]
+EMAIL=[your_email]
 sudo passwd openvpn
 ```
 
