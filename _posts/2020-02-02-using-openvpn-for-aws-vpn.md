@@ -10,6 +10,8 @@ I continue to find a need for a simple and inexpensive VPN solution for Amazon W
 
 In the Good, Fast, Cheap triangle I am working towards Fast and Cheap here.  Overall I want to connect to my AWS VPC via VPN, access resources and then disconnect.  I do not have a goal beyond that.  Thus... here is the walk-through I use to stand up an OpenVPN server in an Amazon Web Services (AWS) account and use [Let's Encrypt](https://letsencrypt.org/) to provide the SSL certificate.
 
+<img src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/vpn-cloudcraft.png" class="screenshot">
+
 #### Create the Instance
 
 First, in my AWS account I locate OpenVPN image in the AWS marketplace:
