@@ -6,32 +6,32 @@ tags: aws
 
 I continue to find a need for a simple and inexpensive VPN solution for Amazon Web Services.  The VPN solutions AWS provides feel like extended pricing overkill for what I am typically looking for.  I also want to add SSL for the HTTPS side of the configuration via [Let's Encrypt](https://letsencrypt.org/).
 
-## Pick 2
+### Pick 2
 
 In the Good, Fast, Cheap triangle I am working towards Fast and Cheap here.
 
-## Goals
+### Goals
 
 Overall I want to connect to my AWS VPC via VPN, access resources and then disconnect.  I do not have a goal beyond that.
 
-## Process
+### Process
 
 Here is the walk through I use to stand up an OpenVPN server in an AWS account and use [Let's Encrypt](https://letsencrypt.org/) to provide the SSL certificate.
 
-### Create the Instance
+#### Create the Instance
 
 First, in my AWS account I locate OpenVPN image in the AWS marketplace:
-![aws marketplace for openvpn](/images/openvpn-marketplace.png)
+<img alt="aws marketplace for openvpn" src="/images/openvpn-marketplace.png"/>
 
 I then launch this AMI as a **t3.nano** with a public IP (*we will switch to elastic here in a bit*).  I also use their generated security group, **BUT, I add port 80** due to the Let's Encrypt challenge process.
 
-![aws marketplace for openvpn](/images/openvpn-security-group.png)
+<img alt="security group settings for openvpn" src="/images/openvpn-security-group.png"/>
 
-### Elastic IP and DNS (Route53)
+#### Elastic IP and DNS (Route53)
 
 I turn my VPN up and down with the AWS CLI when I need it.  Because of this I prefer to have the instance on an Elastic IP.  Thus, I associate an Elastic IP to the instance.  Then I add the correct DNS names via Route53.
 
-### Login and Configuration
+#### Login and Configuration
 
 After the instance is up I ssh into the system.
 
@@ -42,7 +42,7 @@ ssh -i key.pem openvpnas@$DOMAIN
 ```
 
 On the initial login you'll be presented with the welcome and you'll be walked through the init screen.
-![openvpn service agreement](/images/openvpn-agreement-terminal.png)
+<img alt="openvpn service agreement" src="/images/openvpn-agreement-terminal.png"/>
 
 Please enter 'yes' to indicate your agreement [no]: **yes**
 Will this be the primary Access Server node? **yes**
@@ -62,7 +62,7 @@ Next, set your admin password (how you will login to the web app portion of the 
 sudo passwd openvpn
 ```
 
-### Let's Encrypt - SSL
+#### Let's Encrypt - SSL
 
 ```zsh
 sudo apt-get -y install software-properties-common
@@ -96,12 +96,26 @@ https://DOMAIN:943/admin
 *Note: in my experience this takes a few seconds to start working correctly, unclear why specifically*
 
 
-### Cleanup
+#### Cleanup
 
 Inside of the admin area I do a few things:
 + Change the hostname from the IP to the domain name 
 + Add a user for myself
 
-## Done!
+### Turning it Up & Down
+
+I will typically boot and shutdown the instance when I am not using it.  Here is the AWS CLI command I use for this.  Please note that I use (Named Profiles)[https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html] to get this done.
+
+#### Starting
+```zsh
+aws --region=us-west-2 --profile=aztec ec2 start-instances --instance-ids i-0eafc16349ac669a3
+```
+
+#### Stopping
+```zsh
+aws --region=us-west-2 --profile=aztec ec2 stop-instances --instance-ids i-0eafc16349ac669a3
+```
+
+### Done!
 
 Next, I install the OpenVPN client on my machine(s) and connect!
