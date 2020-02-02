@@ -21,11 +21,11 @@ Here is the walk through I use to stand up an OpenVPN server in an AWS account a
 #### Create the Instance
 
 First, in my AWS account I locate OpenVPN image in the AWS marketplace:
-<img alt="aws marketplace for openvpn" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/openvpn-marketplace.png"/>
+<img alt="aws marketplace for openvpn" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/openvpn-marketplace.png" style="width:75%"/>
 
 I then launch this AMI as a **t3.nano** with a public IP (*we will switch to elastic here in a bit*).  I also use their generated security group, **BUT, I add port 80** due to the Let's Encrypt challenge process.
 
-<img alt="security group settings for openvpn" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/openvpn-security-group.png"/>
+<img alt="security group settings for openvpn" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/openvpn-security-group.png" style="width:75%"/>
 
 #### Elastic IP and DNS (Route53)
 
@@ -42,21 +42,21 @@ ssh -i key.pem openvpnas@$DOMAIN
 ```
 
 On the initial login you'll be presented with the welcome and you'll be walked through the init screen.
-<img alt="openvpn service agreement" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/openvpn-agreement-terminal.png"/>
+<img alt="openvpn service agreement" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/openvpn-agreement-terminal.png" style="width:75%"/>
 
 ```
-Please enter 'yes' to indicate your agreement [no]: **yes**
-Will this be the primary Access Server node? **yes**
-Please specify the network interface and IP address to be used by the Admin Web UI: **1 - all interfaces**
-Please specify the port number for the Admin Web UI.  **943**
-Please specify the TCP port number for the OpenVPN Daemon  **443**
-Should client traffic be routed by default through the VPN?  **no**
-Should client DNS traffic be routed by default through the VPN? **yes**
-Use local authentication via internal DB? **yes**
-Private subnets detected: **XXX.XXX.XXX.XXX/16** (*default*)
-Should private subnets be accessible to clients by default? **yes**
-Do you wish to login to the Admin UI as "openvpn"? **yes**
-Please specify your OpenVPN-AS license key (or leave blank to specify later): **blank**
+Please enter 'yes' to indicate your agreement [no]: yes
+Will this be the primary Access Server node? yes
+Please specify the network interface and IP address to be used by the Admin Web UI: 1 - all interfaces
+Please specify the port number for the Admin Web UI: 943
+Please specify the TCP port number for the OpenVPN Daemon: 443
+Should client traffic be routed by default through the VPN? no
+Should client DNS traffic be routed by default through the VPN? yes
+Use local authentication via internal DB? yes
+Private subnets detected: XXX.XXX.XXX.XXX/16 (default)
+Should private subnets be accessible to clients by default? yes
+Do you wish to login to the Admin UI as "openvpn"? yes
+Please specify your OpenVPN-AS license key (or leave blank to specify later): blank
 ```
 
 Next, set your admin password (how you will login to the web app portion of the setup):
