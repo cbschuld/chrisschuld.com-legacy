@@ -98,7 +98,7 @@ Inside of the admin area I do a few things:
 
 ### Turning it Up & Down
 
-I will typically boot and shutdown the instance when I am not using it.  Here is the AWS CLI command I use for this.  Please note that I use (Named Profiles)[https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html] to get this done.
+I will typically boot and shutdown the instance when I am not using it.  Here is the AWS CLI command I use for this.  Please note that I use [Named Profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html) to get this done.
 
 #### Starting
 ```zsh
