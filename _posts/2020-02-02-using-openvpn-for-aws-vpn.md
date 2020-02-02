@@ -21,11 +21,11 @@ Here is the walk through I use to stand up an OpenVPN server in an AWS account a
 #### Create the Instance
 
 First, in my AWS account I locate OpenVPN image in the AWS marketplace:
-<img alt="aws marketplace for openvpn" src="/images/openvpn-marketplace.png"/>
+<img alt="aws marketplace for openvpn" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/openvpn-marketplace.png"/>
 
 I then launch this AMI as a **t3.nano** with a public IP (*we will switch to elastic here in a bit*).  I also use their generated security group, **BUT, I add port 80** due to the Let's Encrypt challenge process.
 
-<img alt="security group settings for openvpn" src="/images/openvpn-security-group.png"/>
+<img alt="security group settings for openvpn" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/openvpn-security-group.png"/>
 
 #### Elastic IP and DNS (Route53)
 
@@ -42,7 +42,7 @@ ssh -i key.pem openvpnas@$DOMAIN
 ```
 
 On the initial login you'll be presented with the welcome and you'll be walked through the init screen.
-<img alt="openvpn service agreement" src="/images/openvpn-agreement-terminal.png"/>
+<img alt="openvpn service agreement" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/openvpn-agreement-terminal.png"/>
 
 ```
 Please enter 'yes' to indicate your agreement [no]: **yes**
