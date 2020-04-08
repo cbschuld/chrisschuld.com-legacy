@@ -104,6 +104,7 @@ const id = uuid58();
 An example table in my solution might look like this:
 
 **User**
+
 |Column | MySQL Type (eg)| Example Data           |
 |-------|----------------|------------------------|
 | pk    | bigint(11)     | 849                    |
