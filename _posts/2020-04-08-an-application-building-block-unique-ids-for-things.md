@@ -91,7 +91,7 @@ a82da042-5a7d-44ad-8908-80260a6950f7
 
 I know from my own research and underscored by the [Percona article](https://www.percona.com/blog/2019/11/22/uuids-are-popular-but-bad-for-performance-lets-discuss/) if I shrink my key representation by a few characters I will gain a performance advantage.  If I take a base-16 UUID and I change the representation of it to base-58 I can shrink my storage demand by almost 1/3.  I go from a 32-character storage demand to a 22-character storage demand.
 
-I do this in node, for example, using my library here: [uuid-base58](https://www.npmjs.com/package/uuid-base58)
+I do this in NodeJS, for example, using my library here: [uuid-base58](https://www.npmjs.com/package/uuid-base58)
 
 ```js
 import { uuid58 } from "uuid-base58";
