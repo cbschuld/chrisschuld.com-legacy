@@ -120,14 +120,14 @@ Yes, one could absolutely store a UUID in binary.  You can store a UUID in a 16-
 In [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/miscellaneous-functions.html) you have some new functions you can use: [`BIN_TO_UUID` and `UUID_TO_BIN`](https://dev.mysql.com/doc/refman/8.0/en/miscellaneous-functions.html#function_bin-to-uuid
 ).
 
-A lot of my recent work is based on MySQL 5.6 and these functions are not available thus you need to use `UNHEX`.
+A lot of my recent work is based on MySQL 5.7 (shout-out to [Amazon Aurora](https://aws.amazon.com/rds/aurora/)) and these functions are not available thus you need to use `UNHEX`.
 
 ```sql
 SELECT HEX(uuid) FROM MyTable;
 
-SELECT * FROM MyTable WHERE HEX(uuid) = ‘a82da0425a7d44ad8908-80260a6950f7’;
+SELECT * FROM MyTable WHERE HEX(uuid) = "a82da0425a7d44ad8908-80260a6950f7";
 ```
 
 ## Final Thoughts
 
-There are a lof of different ways to create unique identifiers for objects in software.  My solution is by no means the ultimate and is just my opinion - in fact I am confident the technical arguments that could spin from the content above are far-reaching.  Regardless of how you decide to do it go build something great!
+There are a lof of different ways to create unique identifiers for objects in software.  My solution is by no means the ultimate and is just my opinion - in fact - I am confident the technical arguments that could spin from the content above are far-reaching.  Regardless of how you decide to do it go build something great!
