@@ -1,5 +1,5 @@
 ---
-title: An application building block: unique IDs for things
+title: "An application building block: unique IDs for things"
 layout: post
 tags: software node
 ---
