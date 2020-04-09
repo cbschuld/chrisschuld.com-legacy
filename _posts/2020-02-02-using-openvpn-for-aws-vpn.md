@@ -115,3 +115,9 @@ aws --region=us-west-2 --profile=aztec ec2 stop-instances --instance-ids i-0eafc
 ### Done!
 
 Next, I install the OpenVPN client on my machine(s) and connect!
+
+
+
+<small>
+**NOTES:** 2020-04-09 was able to remove ppa for the certbot install - thanks to Amarapal Singh!
+</small>
