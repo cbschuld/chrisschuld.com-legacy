@@ -4,11 +4,11 @@ layout: post
 tags: software node
 ---
 
-Ready to build that next startup?  Awesome!  When you start building a new project, especially if it is API based, there is almost an immediate need for identification. If you are building software for humans you are going to need some type of unique identifier.  You need something unique to relate calls back to your persisted data.  There are a lot of options: auto-incremented numbers, GUID/UUID, or hashes (md5, sha).
+When you start on the journey to build a new project, especially if it is API based, there is an immediate need for identification. If you are building software for humans you are going to need some type of unique identifier for all of your things.  You need something unique to relate calls back to your persisted data.  There are a lot of options: auto-incremented numbers, GUID/UUIDs, or hashes (md5, sha).
 
 ## Auto Incremented Numbers
 
-Auto incremented numbers are definitely the best for overall database performance.  If we think specifically about RDBMS systems the auto-incremented columns are going to give you the best leverage for database speed.  What you gain is system performance specifically in indexing and scans.  What you lose is security through obfuscation.
+Auto incremented numbers are definitely the best overall for database performance.  If we think specifically about RDBMS systems the auto-incremented columns are going to give you the best leverage for database speed.  This is because the database system will use the smallest possible key storage and it will be able to put more keys into its buffer pool.  What you gain is system performance specifically in indexing and scans.  What you lose is security and data clarity through obfuscation.
 
 If you choose to go with simplistic with database-driven automatically incremented numbers you do end up with extremely transparent endpoints.
 ```
