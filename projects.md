@@ -1,7 +1,7 @@
 ---
 title: Projects
 layout: page
-order: 3
+order: 2
 ---
 
 + [ReactJS App/Interface for the Monoprice Six Zone Amp/Controller ](/projects/react-app-for-the-monoprice-six-zone-audio-controller/) - Provides a mobile-centric web app for controlling a multi-zone whole house audio system.  Monoprice sells this inexpensive six zone home audio controller that provides a lot of value for the price point.  [I use two them in my setup](/2019/05/whole-house-audio/) and thus far have had a great experience with them.  You can control them remotely using a JSON API that Jesse Newland created and I have helped expand on. <br/><a class="openSourceLink" href="https://github.com/cbschuld/monoprice-multizone-interface"><i class="fab fa-github"></i> Github</a>

@@ -1,7 +1,8 @@
 ---
 layout: page
 title: Tags
-order: 2
+sitemap: false
+order: 3
 ---
 
 {% comment %}
