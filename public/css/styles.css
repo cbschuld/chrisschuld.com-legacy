@@ -1,0 +1,9 @@
+---
+layout: null
+---
+{% capture include_to_scssify %}
+    {% include css/syntax.css %}
+    {% include css/poole.css %}
+    {% include css/hyde.css %}
+{% endcapture %}
+{{ include_to_scssify | scssify | strip_newlines  }}

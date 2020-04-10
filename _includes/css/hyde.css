@@ -33,6 +33,7 @@
 
 html {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-display: swap;
 }
 @media (min-width: 48em) {
   html {
@@ -65,7 +66,7 @@ html {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 18rem;
+    width: 16rem;
     text-align: left;
   }
 }
@@ -81,6 +82,7 @@ html {
   margin-top: 0;
   font-family: "Pacifico", serif;
   font-size: 2rem;
+  font-display: swap;
 }
 
 /* Sidebar nav */
@@ -104,7 +106,9 @@ a.sidebar-nav-item:focus {
   border-radius: 50%;
   opacity: .7;
   width: 50%;
-  margin-left: 25%;
+}
+.sidebar div.photo {
+  text-align:center;
 }
 
 /* Sticky sidebar
@@ -139,14 +143,14 @@ a.sidebar-nav-item:focus {
     /*
     max-width: 38rem;
     */
-    margin-left: 20rem;
-    margin-right: 2rem;
+    margin-left: 19rem;
+    margin-right: 1rem;
   }
 }
 
 @media (min-width: 64em) {
   .content {
-    margin-left: 22rem;
+    margin-left: 19rem;
     margin-right: 4rem;
   }
 }
@@ -164,15 +168,15 @@ a.sidebar-nav-item:focus {
     right: 0;
   }
   .layout-reverse .content {
-    margin-left: 2rem;
-    margin-right: 20rem;
+    margin-left: 1rem;
+    margin-right: 19rem;
   }
 }
 
 @media (min-width: 64em) {
   .layout-reverse .content {
     margin-left: 4rem;
-    margin-right: 22rem;
+    margin-right: 19rem;
   }
 }
 
