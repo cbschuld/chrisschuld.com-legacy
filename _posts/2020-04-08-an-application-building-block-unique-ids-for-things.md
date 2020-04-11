@@ -103,6 +103,14 @@ import { uuid58 } from "uuid-base58";
 const id = uuid58();
 ```
 
+I do this in PHP, for example, using my library here: [php-uuid-base58](https://packagist.org/packages/cbschuld/php-uuid-base58)
+
+```php
+use cbschuld\UuidBase58;
+
+$id = UuidBase58::id();
+```
+
 ## Example Table:
 
 An example table in my solution might look like this:
