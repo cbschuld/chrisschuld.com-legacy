@@ -1,7 +1,7 @@
 ---
 layout: tagpage
-title: "Tag: software"
-tag: software
+title: "Tag: dev"
+tag: dev
 robots: noindex
 sitemap: false
 ---
