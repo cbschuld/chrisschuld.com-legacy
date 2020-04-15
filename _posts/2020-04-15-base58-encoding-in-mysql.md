@@ -4,43 +4,65 @@ layout: post
 tags: dev mysql
 ---
 
-Encoding in base-58 numbers in MySQL is fairly straight forward until you start overflowing integer types.  If you search for base-58 encoding in MySQL there is not a lot of info.  Micah Walter has a clean function called [base58_encode](https://gist.github.com/micahwalter/d6c8f8bc677978cf01a5) that works well until you toss in anything larger than a BIGINT.  It overflows:
+Encoding numbers in base-58 via MySQL is fairly straightforward until you start overflowing integer types.  Basically as soon as you reach a 65bit number.  If you search for base-58 encoding in MySQL there is not a lot of info overall.  Micah Walter has a clean function called [base58_encode](https://gist.github.com/micahwalter/d6c8f8bc677978cf01a5) that works well until you toss in anything larger than a BIGINT.  It overflows:
 
 <img class="carbon" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/base58_encode.png"/>
 
-If you are using base-58 encoding to create unique identifiers you run into problems sending in really large hash values.  A UUID a perfect example at 128bits of data.  A UUID's 128bits overflows the BIGINT quickly and you quickly end up with the infamous -1: 18446744073709551615.
+If you are using base-58 encoding to create unique identifiers you run into problems sending in really large hash values.  A UUID is a perfect example at 128bits of data to cover the entire UUID.  A UUID's 128bits overflows the BIGINT quickly and you end up with the infamous -1 max value: 18446744073709551615.
 
 <img class="carbon" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/overflow_mysql_base58.png"/>
 
-In MySQL you can use Decimal types to work around this and can create an encoder that will encode really large numbers.  Decimal in MySQL is not stored with an FPU but is stored as characters.  However, can you can still do `MOD()` and mathematics on it which is all we need for encoding.
+In MySQL you can use **DECIMAL** types to work around this and can create an encoder that will encode really large numbers.  Decimal in MySQL is not stored with an FPU but is stored as characters.  However, can you can still do `MOD()` and mathematics on it which is all we need for encoding.  The challenge becomes dealing with the least significant 64-bits and then the most significant 64-bits of the incoming value.
 
-Here is how I encode really big numbers using DECIMAL instead of **BIGINT** to provide a wider result.  This solutions uses a MySQL function and is using the Bitcoin alphabet:
+Here is how I encode really big numbers using **DECIMAL** instead of **BIGINT** to provide a *wider* result.  This solutions uses a MySQL function and is using the [Bitcoin alphabet](https://en.bitcoin.it/wiki/Base58Check_encoding):
 
 ```sql
 -- Change delimiter so that the function body doesn't end the function declaration
 DELIMITER //
-CREATE FUNCTION base58_encode(input VARCHAR(64))
-  RETURNS CHAR(22) DETERMINISTIC
+CREATE FUNCTION base58_encode(hexInput VARCHAR(32))
+    RETURNS TEXT
 BEGIN
-  DECLARE alphabet char(58);
-  DECLARE b DECIMAL(64) DEFAULT 0;
-  DECLARE i INT DEFAULT 0;
-  DECLARE u58 CHAR(22) DEFAULT "";
+    DECLARE alphabet CHAR(58);
+    DECLARE base10 DECIMAL(65);
+    DECLARE base58 TEXT;
+    DECLARE inputLength INT;
+    DECLARE _mod INT;
 
-  SET alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-  SET b = convert(hex(input),DECIMAL(64,0));
+    SET inputLength = LENGTH(hexInput);
 
-  WHILE b > 0 DO
-    SET i = MOD(b,58);
-    SET u58 = CONCAT(SUBSTRING(alphabet FROM i FOR 1), u58);
-    SET b = b / 58;
-  END WHILE;
+    IF (inputLength > 32) THEN
+        SIGNAL SQLSTATE '40004' SET MESSAGE_TEXT = "Input has a 32 character maximum";
+    END IF;
 
-  SET u58 = CONCAT(SUBSTRING(alphabet FROM i FOR 1), u58);
+    -- Convert the lower 64bits from base-16 to base-10
+    SET base10 = CAST(
+      CONV(SUBSTRING(hexInput, -LEAST(16, inputLength)), 16, 10)
+      AS DECIMAL(65)
+    );
+    -- Convert the most significant 64bits from base-16 to base-10
+    IF inputLength > 16 THEN
+        SET base10 = base10 + (
+          18446744073709551616 * CAST(
+            CONV(SUBSTRING(hexInput, 1, inputLength - 16), 16, 10)
+            AS DECIMAL(65)
+          )
+        );
+    END IF;
 
-  RETURN (u58);
+    -- Encode in Base58
+    SET alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+    SET base58 = "";
+    WHILE base10 > 0 DO
+        SET _mod = base10 % 58;
+        SET base58 = CONCAT(
+            SUBSTRING(alphabet, _mod + 1, 1),
+            base58
+        );
+        SET base10 = FLOOR(base10 / 58);
+    END WHILE;
 
-END
+    return base58;
+END;
 //
 
 -- Switch back the delimiter
@@ -49,11 +71,16 @@ DELIMITER ;
 
 I typically build solutions with [public facing identifiers that are built from UUIDs](/2020/04/an-application-building-block-unique-ids-for-things/).  For this I use [ssvac's solution for v4 UUIDs](https://stackoverflow.com/questions/32965743/how-to-generate-a-uuidv4-in-mysql) and I combine it into a single function called **uuid_base58** - this way I can create IDs automatically at the dB level.
 
+Here I create a few functions:
++ `uuid_v4_no_dashes()` which is Ssvac's solution with out the dashes
++ `base58_encode(VARCHAR)` which is the encoder from above
++ `uuid_base58()` which simplifies both calls
+
 ```sql
 -- Change delimiter so that the function body doesn't end the function declaration
 DELIMITER //
 
-CREATE FUNCTION uuid_v4_no_dash()
+CREATE FUNCTION uuid_v4_no_dashes()
     RETURNS CHAR(36)
 BEGIN
     -- Generate 8 2-byte strings that we will combine into a UUIDv4
@@ -85,28 +112,76 @@ DELIMITER //
 CREATE FUNCTION uuid_base58()
   RETURNS CHAR(22) DETERMINISTIC
 BEGIN
-  DECLARE alphabet char(58);
-  DECLARE b DECIMAL(64) DEFAULT 0;
-  DECLARE i INT DEFAULT 0;
-  DECLARE u58 CHAR(22) DEFAULT "";
-
-  SET alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-  SET b = convert(hex(uuid_v4_no_dash()),DECIMAL(64,0));
-
-  WHILE b > 0 DO
-    SET i = MOD(b,58);
-    SET u58 = CONCAT(SUBSTRING(alphabet FROM i FOR 1), u58);
-    SET b = b / 58;
-  END WHILE;
-
-  RETURN (u58);
-
+  return base58_encode(uuid_v4_no_dashes());
 END
 //
 
 -- Switch back the delimiter
 DELIMITER ;
+
+
+-- Change delimiter so that the function body doesn't end the function declaration
+DELIMITER //
+CREATE FUNCTION base58_encode(hexInput VARCHAR(32))
+    RETURNS TEXT
+BEGIN
+    DECLARE alphabet CHAR(58);
+    DECLARE base10 DECIMAL(65);
+    DECLARE base58 TEXT;
+    DECLARE inputLength INT;
+    DECLARE _mod INT;
+
+    SET inputLength = LENGTH(hexInput);
+
+    IF (inputLength > 32) THEN
+        SIGNAL SQLSTATE '40004' SET MESSAGE_TEXT = "Input has a 32 character maximum";
+    END IF;
+
+    -- Convert the lower 64bits from base-16 to base-10
+    SET base10 = CAST(
+      CONV(SUBSTRING(hexInput, -LEAST(16, inputLength)), 16, 10)
+      AS DECIMAL(65)
+    );
+    -- Convert the most significant 64bits from base-16 to base-10
+    IF inputLength > 16 THEN
+        SET base10 = base10 + (
+          18446744073709551616 * CAST(
+            CONV(SUBSTRING(hexInput, 1, inputLength - 16), 16, 10)
+            AS DECIMAL(65)
+          )
+        );
+    END IF;
+
+    -- Encode in Base58
+    SET alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+    SET base58 = "";
+    WHILE base10 > 0 DO
+        SET _mod = base10 % 58;
+        SET base58 = CONCAT(
+            SUBSTRING(alphabet, _mod + 1, 1),
+            base58
+        );
+        SET base10 = FLOOR(base10 / 58);
+    END WHILE;
+
+    return base58;
+END;
+//
+
+-- Switch back the delimiter
+DELIMITER ;
+
 ```
+
+We can test against knowns:
+```
+Incoming Hexadecimal Number: 3b46511ae3b047b6ad2c7f25d0a995e1
+
+Base 16: 3b46511ae3b047b6ad2c7f25d0a995e1
+Base 10: 78789557536983802423002567422232860129
+Base 58: 8KXmFY9SQtjKwqdiiMmrgg
+```
+<img class="carbon" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/base58_testing.png"/>
 
 This allows me to easily create UUIDs at the dB level:
 
