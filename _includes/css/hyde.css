@@ -274,6 +274,10 @@ img.screenshot {
   max-width: 50%;
 }
 
+img.carbon {
+  width: 50%;
+}
+
 .openSourceLink {
 	background-color:transparent;
 	-moz-border-radius:3px;

@@ -4,13 +4,13 @@ layout: post
 tags: dev mysql
 ---
 
-Encoding in base-58 numbers in MySQL is fairly straight forward until you start to overflowing integer types.  If you search for base-58 encoding in MySQL there is not a lot of info.  Micah Walter has a clean [function called base58_encode](https://gist.github.com/micahwalter/d6c8f8bc677978cf01a5) that works well until you toss in anything larger than a BIGINT.  It overflows:
+Encoding in base-58 numbers in MySQL is fairly straight forward until you start overflowing integer types.  If you search for base-58 encoding in MySQL there is not a lot of info.  Micah Walter has a clean function called [base58_encode](https://gist.github.com/micahwalter/d6c8f8bc677978cf01a5) that works well until you toss in anything larger than a BIGINT.  It overflows:
 
-<img class="screenshot" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/base58_encode.png"/>
+<img class="carbon" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/base58_encode.png"/>
 
 If you are using base-58 encoding to create unique identifiers you run into problems sending in really large hash values.  A UUID a perfect example at 128bits of data.  A UUID's 128bits overflows the BIGINT quickly and you quickly end up with the infamous -1: 18446744073709551615.
 
-<img class="screenshot" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/overflow_mysql_base58.png"/>
+<img class="carbon" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/overflow_mysql_base58.png"/>
 
 In MySQL you can use Decimal types to work around this and can create an encoder that will encode really large numbers.  Decimal in MySQL is not stored with an FPU but is stored as characters.  However, can you can still do `MOD()` and mathematics on it which is all we need for encoding.
 
@@ -110,4 +110,4 @@ DELIMITER ;
 
 This allows me to easily create UUIDs at the dB level:
 
-<img class="screenshot" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/select_uuid_base58.png"/>
+<img class="carbon" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/select_uuid_base58.png"/>
