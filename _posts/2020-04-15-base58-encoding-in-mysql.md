@@ -69,6 +69,8 @@ END;
 DELIMITER ;
 ```
 
+## Using it to created unique IDs
+
 I typically build solutions with [public facing identifiers that are built from UUIDs](/2020/04/an-application-building-block-unique-ids-for-things/).  For this I use [ssvac's solution for v4 UUIDs](https://stackoverflow.com/questions/32965743/how-to-generate-a-uuidv4-in-mysql) and I combine it into a single function called **uuid_base58** - this way I can create IDs automatically at the dB level.
 
 Here I create a few functions:
@@ -173,6 +175,8 @@ DELIMITER ;
 
 ```
 
+## Testing
+
 We can test against knowns:
 ```
 Incoming Hexadecimal Number: 3b46511ae3b047b6ad2c7f25d0a995e1
@@ -183,6 +187,14 @@ Base 58: 8KXmFY9SQtjKwqdiiMmrgg
 ```
 <img class="carbon" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/base58_testing.png"/>
 
+I then used it to insert 6M unique rows - no collisions!
+
 This allows me to easily create UUIDs at the dB level:
 
 <img class="carbon" src="https://s3-us-west-2.amazonaws.com/chrisschuld.com/images/select_uuid_base58.png"/>
+
+## Caveats / Knowns
+
+I am confident this is not the best way to do this and I am excited to discuss better approaches with anyone!  Just [contact me](/contact).
+
+The use of `uuid_v4_no_dashes` in the form that Ssvac suggested may create collisions as it's not really a true UUID construction.  Over 6M rows using true UUID()s I had no collisions.  Using Ssvac's solution I noted three collisions.
