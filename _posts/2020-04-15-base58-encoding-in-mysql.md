@@ -26,7 +26,7 @@ BEGIN
     DECLARE base10 DECIMAL(65);
     DECLARE base58 TEXT;
     DECLARE inputLength INT;
-    DECLARE mod INT;
+    DECLARE remainder INT;
 
     SET inputLength = LENGTH(hexInput);
 
@@ -53,9 +53,9 @@ BEGIN
     SET alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
     SET base58 = "";
     WHILE base10 > 0 DO
-        SET mod = base10 % 58;
+        SET remainder = base10 % 58;
         SET base58 = CONCAT(
-            SUBSTRING(alphabet, mod + 1, 1),
+            SUBSTRING(alphabet, remainder + 1, 1),
             base58
         );
         SET base10 = FLOOR(base10 / 58);
@@ -131,7 +131,7 @@ BEGIN
     DECLARE base10 DECIMAL(65);
     DECLARE base58 TEXT;
     DECLARE inputLength INT;
-    DECLARE mod INT;
+    DECLARE remainder INT;
 
     SET inputLength = LENGTH(hexInput);
 
@@ -158,9 +158,9 @@ BEGIN
     SET alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
     SET base58 = "";
     WHILE base10 > 0 DO
-        SET mod = base10 % 58;
+        SET remainder = base10 % 58;
         SET base58 = CONCAT(
-            SUBSTRING(alphabet, mod + 1, 1),
+            SUBSTRING(alphabet, remainder + 1, 1),
             base58
         );
         SET base10 = FLOOR(base10 / 58);
