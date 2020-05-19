@@ -69,3 +69,8 @@ scp -r * pi@10.0.0.82:/var/www/html/
 ### View the App
 
 That is all it takes to use this application; if you point your browser to the IP address of the Raspberry Pi you'll see the App!
+
+
+### Updates
+
++ 2020-05-19 - I retooled how the sliders are used.  Localized the slider's value state to the slider and only call the amp for an update AFTER the slider is let go by the user.  This drastically changed the way the slider "felt" to the consumer.  Marked as [version 0.2.0.](https://github.com/cbschuld/monoprice-multizone-interface/releases/tag/v0.2.0)
