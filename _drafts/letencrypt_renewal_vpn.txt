@@ -1,0 +1,18 @@
+#!/bin/sh
+# https://www.sideras.net/lets-encrypt-https-certificates-for-openvpn-as-access-server/
+
+DOMAIN="vpn.server.com"
+
+set -eu
+
+/etc/init.d/openvpnas stop
+
+/opt/letsencrypt/letsencrypt-auto certonly -c /etc/letsencrypt/vpn.server.com.ini
+
+/usr/local/openvpn_as/scripts/confdba -mk cs.ca_bundle -v "`cat /etc/letsencrypt/live/$DOMAIN/fullchain.pem`"
+
+/usr/local/openvpn_as/scripts/confdba -mk cs.priv_key -v "`cat /etc/letsencrypt/live/$DOMAIN/privkey.pem`" > /dev/null
+
+/usr/local/openvpn_as/scripts/confdba -mk cs.cert -v "`cat /etc/letsencrypt/live/$DOMAIN/cert.pem`"
+
+/etc/init.d/openvpnas start
