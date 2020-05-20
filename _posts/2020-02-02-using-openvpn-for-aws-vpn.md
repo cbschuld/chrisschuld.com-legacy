@@ -116,7 +116,9 @@ aws --region=us-west-2 --profile=aztec ec2 stop-instances --instance-ids i-0eafc
 
 Next, I install the OpenVPN client on my machine(s) and connect!
 
+### Odd Notes
 
++ Occasionally I will find the web services have died on a few of my instances.  I have to log into them and kick the vpn server to restore them.  I am unclear why this happens right now but it seems to happen from time-to-time.  I restart it with: `sudo service openvpnas restart` 
 
 <small>
 **NOTES:** 2020-04-09 was able to remove ppa for the certbot install - thanks to Amarapal Singh!
