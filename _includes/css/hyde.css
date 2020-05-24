@@ -272,6 +272,7 @@ img.shadow {
 
 img.screenshot {
   max-width: 50%;
+  margin-left: 2rem;
 }
 
 img.carbon {
