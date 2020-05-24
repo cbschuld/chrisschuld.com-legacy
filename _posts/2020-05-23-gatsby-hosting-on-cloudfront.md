@@ -12,7 +12,7 @@ When Gatsby builds your web/application/site you will notice it builds most of y
 
 ### S3 vs CloudFront Access Denied 
 
-When you host a Gatsby program on S3 is works perfectly but when you move it to CloudFront you probably get the nasty "AccessDenied" error.  This is because the behavior of CloudFront's default root object is quite different from the behavior of Amazon S3 index documents and how it deals with root objects. When you configure an Amazon S3 bucket as a website and specify the index document, Amazon S3 returns the index document even if a user requests a different subdirectory.  This is absolutely not how CloudFront works thus you get the "AccessDenied" error ([more information](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html)).
+When you host a Gatsby program on S3 it functions perfectly but when you move it to CloudFront you likely get the nasty "AccessDenied" error.  This is because the behavior of CloudFront's default root object is quite different from the behavior of Amazon S3 index documents and how it deals with root objects. When you configure an Amazon S3 bucket as a website and specify the index document, Amazon S3 returns the index document even if a user requests a different subdirectory.  This is absolutely not how CloudFront works thus you get the "AccessDenied" error ([more information](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html)).
 
 ### Lambda to the Rescue
 
