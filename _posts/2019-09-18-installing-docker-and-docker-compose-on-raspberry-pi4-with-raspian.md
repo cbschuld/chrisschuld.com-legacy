@@ -17,6 +17,14 @@ This installs all of the components needed to install *docker-compose* using *pi
 
 *Warning:* this is NOT a fast process; it will take some time on the PI4
 
+Using **Python3** (*suggested*):
+```
+sudo apt update
+sudo apt install -y python3 python3-pip libffi-dev
+sudo pip3 install docker-compose
+```
+
+Using **Python2**:
 ```
 sudo apt update
 sudo apt install -y python python-pip libffi-dev python-backports.ssl-match-hostname
