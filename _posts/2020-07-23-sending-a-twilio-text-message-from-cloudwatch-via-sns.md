@@ -1,5 +1,5 @@
 ---
-title: "Send an SMS message with Twilio from CloudWatch via SNS"
+title: "Send an SMS message with Twilio from a CloudWatch Alarm via SNS (through serverless Lambda)"
 layout: post
 tags: dev twilio aws serverless
 ---
@@ -7,6 +7,8 @@ tags: dev twilio aws serverless
 ### Summary
 
 GRRRR my app just blew up, a CloudWatch alarm triggered!  I need the alert on my phone.  In this example we will use [Twilio](https://www.twilio.com/) to send an SMS message to my phone with the details.  (Source code: [https://github.com/cbschuld/sns-to-twilio-sms](https://github.com/cbschuld/sns-to-twilio-sms))
+
+In this walk-through we are going to ingest a CloudWatch Alarm from an SNS publish.  From the SNS message we will use serverless AWS Lambda to send an SMS message using Twilio.
 
 ### CloudWatch Alarms
 
