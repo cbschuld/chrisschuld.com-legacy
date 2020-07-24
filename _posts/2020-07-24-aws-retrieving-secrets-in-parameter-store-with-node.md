@@ -29,7 +29,7 @@ const getParameterWorker = async (name:string, decrypt:boolean) : Promise<string
 }
 
 export const getParameter = async (name:string) : Promise<string> => {
-    return getParameterWorker(name,true);
+    return getParameterWorker(name,false);
 }
 
 export const getEncryptedParameter = async (name:string) : Promise<string> => {
