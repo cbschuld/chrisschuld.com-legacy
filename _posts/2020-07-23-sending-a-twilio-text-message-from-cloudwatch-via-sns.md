@@ -6,7 +6,7 @@ tags: dev twilio aws serverless
 
 ### Summary
 
-GRRRR my app just blew up, a CloudWatch alarm triggered!  I need the alert on my phone.  In this example we will use [Twilio](https://www.twilio.com/) to send an SMS message to my phone with the details.  (Source code for this is here: )
+GRRRR my app just blew up, a CloudWatch alarm triggered!  I need the alert on my phone.  In this example we will use [Twilio](https://www.twilio.com/) to send an SMS message to my phone with the details.  (Source code: [https://github.com/cbschuld/sns-to-twilio-sms](https://github.com/cbschuld/sns-to-twilio-sms))
 
 ### CloudWatch Alarms
 
