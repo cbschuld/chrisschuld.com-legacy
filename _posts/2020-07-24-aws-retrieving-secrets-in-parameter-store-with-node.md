@@ -1,116 +1,52 @@
 ---
-title: "Send an SMS message with Twilio from a CloudWatch Alarm via SNS (through serverless Lambda)"
+title: "Retrieving Parameters in the AWS Parameter Store with Node/Typescript"
 layout: post
-tags: dev twilio aws serverless
+tags: dev aws serverless
 ---
 
 ### Summary
 
-GRRRR my app just blew up, a CloudWatch alarm triggered!  I need the alert on my phone.  In this example we will use [Twilio](https://www.twilio.com/) to send an SMS message to my phone with the details.  (Source code: [https://github.com/cbschuld/sns-to-twilio-sms](https://github.com/cbschuld/sns-to-twilio-sms))
+If you are storing secrets (passwords/keys) in AWS you can use a few different methods.  *Please do not keep in them in your repos or in your source code!*  Two popular methods on AWS are Parameters in the [SSM Parameter store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html) OR using the [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/).  The Parameter store is free but there is no SLA on performance.  The Secrets Manager is expensive.
 
-In this walk-through we are going to ingest a CloudWatch Alarm from an SNS publish.  From the SNS message we will use serverless AWS Lambda to send an SMS message using Twilio.
+### Parameter Store
 
-### CloudWatch Alarms
+First, create a parameter (encrypted or not).  You do this from SSM --> Parameter Store --> Create.  
+<img class="screenshot" alt="aws-parameter-store" src="https://user-images.githubusercontent.com/231867/88430052-a5537300-cdac-11ea-95cf-4c7401271368.png"/>
 
-If you are hosting apps/projects in AWS you will eventually find a need for CloudWatch alarms.  With all things software there are a lot of different ways to elevate an alert from CloudWatch to messaging services *(eg Slack, SMS, etc)*.  When a CloudWatch alarms triggers it produces a JSON payload with the alarm info baked in the payload.  We will use that JSON payload and [Twilio](https://www.twilio.com/) to push the info to a phone via SMS *(or several numbers)*.
+### Obtain the value using Node
 
-### Twilio
-
-You will need a [Twilio](https://www.twilio.com/) account for this example and you'll need a Twilio SID and Auth Token.  I use Twilio for all of my SMS/Voice needs to it's a natural fit to have them send me the SMS message via one of my numbers.
-
-### Serverless (serverless.com)
-
-I use the [serverless.com](https://www.serverless.com/) environment for nearly all of my serverless management.  The system is incredibly good and there are a lot of developers in the ecosystem to help out.
-
-I also build all of my serverless using [Typescript](https://www.typescriptlang.org/) thus you will see me use the template for Typescript.
-
-I am going to call this `sns-to-twilio-sms` so we can start with the following command(s):
-
-```zsh
-cd /projects
-serverless create --path sns-to-twilio-sms --name sns-to-twilio-sms --template=aws-nodejs-typescript
-cd sns-to-twilio-sms
-npm install
-npm i twilio
-```
-
-*Note: not only do we create the serverless project but we also install the assets and add Twilio's SDK into the project*
-
-### serverless.yml file
-
-First, adjust the serverless file to manage the SNS directly.  Typically you'll already have an SNS topic for your alert structure so you'll want to include the ARN for the SNS topic directly.
-
-```yaml
-service:
-  name: sns-to-twilio-sms
-
-custom:
-  webpack:
-    webpackConfig: ./webpack.config.js
-    includeModules: true
-
-plugins:
-  - serverless-webpack
-
-provider:
-  name: aws
-  region: us-west-2
-  runtime: nodejs12.x
-  profile: isn
-  environment:
-    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
-    TWILIO_ACCOUNT_SID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    TWILIO_AUTH_TOKEN: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    TWILIO_PHONE_NUMBER: +1XXX5551234
-
-functions:
-  send:
-    handler: handler.send
-    events:
-      - sns: arn:aws:sns:us-west-2:xxxxxxxxxx:AlertAllThePeeps
-```
-
-### handler.ts
-
-Next, we'll adjust the handlers to call Twilio to make send the SMS message:
+Here is a library I created [stored on gist](https://gist.github.com/cbschuld/938190f81d00934f7a158ff223fb5e02)
 
 ```typescript
-import { SNSHandler, SNSEvent } from "aws-lambda";
-import "source-map-support/register";
-import { Twilio } from "twilio";
+import { SSM } from "aws-sdk";
 
-export const send: SNSHandler = async (event: SNSEvent) => {
-  await Promise.all(event.Records.map((record) => {
-    const subject = record.Sns.Subject;
+const getParameterWorker = async (name:string, decrypt:boolean) : Promise<string> => {
+    const ssm = new SSM();
+    const result = await ssm
+    .getParameter({ Name: name, WithDecryption: decrypt })
+    .promise();
+    return result.Parameter.Value;
+}
 
-    // CloudWatch Alarm Destructuring
-    const {
-      AlarmName: alarmName,
-      NewStateValue: stateValue,
-      NewStateReason: reason,
-    } = JSON.parse(record.Sns.Message);
+export const getParameter = async (name:string) : Promise<string> => {
+    return getParameterWorker(name,true);
+}
 
-    const message = `[${subject}]: ${stateValue}: ${alarmName} (${reason})`;
-
-    const client = new Twilio(
-      process.env.TWILIO_ACCOUNT_SID,
-      process.env.TWILIO_AUTH_TOKEN
-    );
-
-    return client.messages.create({
-      body: message,
-      to: "+1XXX5554321",
-      from: process.env.TWILIO_PHONE_NUMBER,
-    });
-  }));
-};
+export const getEncryptedParameter = async (name:string) : Promise<string> => {
+    return getParameterWorker(name,true);
+}
 ```
 
-After those files are complete you may need to bump `tsconfig.json` to allow for imports `allowSyntheticDefaultImports`.  Now you are ready to publish the function via serverless.
+### Using the function(s)
 
-Finish the job with:
-```zsh
-sls deploy --stage=prod
+```typescript
+import { getEncryptedParameter } from "./parameterStore";
+.
+.
+.
+  const twilioSID = await getEncryptedParameter("TWILIO_ACCOUNT_SID");
+.
+.
+.
+
 ```
-
-Next time you publish a CloudWatch alert to your SNS topic it will send you a text via Twilio.
