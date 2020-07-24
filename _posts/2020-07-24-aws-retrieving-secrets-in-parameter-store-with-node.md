@@ -1,7 +1,7 @@
 ---
 title: "Retrieving Parameters in the AWS Parameter Store with Node/Typescript"
 layout: post
-tags: dev aws serverless
+tags: dev aws node serverless
 ---
 
 ### Summary
