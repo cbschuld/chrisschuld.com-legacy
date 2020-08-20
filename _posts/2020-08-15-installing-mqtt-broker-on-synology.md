@@ -1,7 +1,7 @@
 ---
 title: "Installing an MQTT Broker with Synology (Mosquitto on Docker)"
 layout: post
-tags: dev ha
+tags: dev ha docker
 ---
 
 ### Summary
