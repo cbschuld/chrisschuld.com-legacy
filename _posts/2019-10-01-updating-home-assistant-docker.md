@@ -38,3 +38,19 @@ docker stop homeassistant
 docker pull homeassistant/raspberrypi4-homeassistant:latest
 docker start homeassistant
 ```
+
+## My personal solution...
+
+I have the following `update.sh` script in my `/root` folder that I use to accelerate the update process.  To run it I jump into root with `sudo su -` and then `cd $HOME && ./update.sh`:
+
+```bash
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+cd /root/homeassistant/
+docker-compose down &&  docker-compose pull &&  reboot
+```
